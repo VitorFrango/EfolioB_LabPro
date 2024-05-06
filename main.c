@@ -4,24 +4,33 @@
 #include <string.h>
 
 int main() {
-    char comando[100];
-    int x, y, l, h, p;
 
-    while (1) {
-        printf("Digite um comando: ");
-        fgets(comando, sizeof(comando), stdin);
+    int x, y, l, h, p, escolha;
 
-        // processar comando
-        if (sscanf(comando, "criar %d %d %d %d", &x, &y, &l, &h) == 4) {
-            criar_retangulo(x, y, l, h);
-        } else if (sscanf(comando, "mover %d %d %d %d", &x, &y, &p, &p) == 4) {
-            mover_retangulo(x, y, p, p);
-        } else if (strcmp(comando, "desenhar\n") == 0) {
-            desenhar_grelha();
-        } else {
-            printf("Comando inválido\n");
+    while (escolha != 0) {
+        printf("Escolha uma opção:\n");
+        printf("1. Criar retângulo\n");
+        printf("2. Mover retângulo\n");
+        printf("0. Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                printf("Introduza as coordenadas x e y, a largura e a altura do retângulo: ");
+                scanf("%d %d %d %d", &x, &y, &l, &h);
+                criar_retangulo(x, y, l, h);
+                break;
+            case 2:
+                printf("Introduza as coordenadas x e y do retângulo a mover, o desvio e se é correto: ");
+                scanf("%d %d %d %d", &x, &y, &p, &escolha);
+                mover_retangulo(x, y, p, escolha);
+                break;
+            case 0:
+                printf("Sair!\n");
+                break;
+            default:
+                printf("Opção inválida\n");
         }
-
-
     }
 }

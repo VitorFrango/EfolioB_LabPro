@@ -6,4 +6,5 @@ set(CMAKE_C_STANDARD 11)
 add_executable(EfolioB2324 main.c
         retangulo.h
         retangulo.c
-        grelha.c)
+        grelha.c
+        grelha.h)
