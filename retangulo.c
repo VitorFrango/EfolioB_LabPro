@@ -4,6 +4,7 @@
 
 #include "retangulo.h"
 #include <stdio.h>
+#include <stdbool.h>
 
 static Retangulo retangulos[MAX_RETANGULOS];  // Array de retângulos
 static int retangulo_conta = 0; // Contador de retângulos

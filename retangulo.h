@@ -5,6 +5,8 @@
 #ifndef EFOLIOB2324_RETANGULO_H
 #define EFOLIOB2324_RETANGULO_H
 
+#include <stdbool.h>
+
 #define MAX_RETANGULOS 100
 #define MAX_LARGURA 80
 #define MAX_ALTURA 25

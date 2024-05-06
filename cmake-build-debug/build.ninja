@@ -61,6 +61,12 @@ build CMakeFiles/EfolioB2324.dir/retangulo.c.o: C_COMPILER__EfolioB2324_unscanne
   OBJECT_DIR = CMakeFiles/EfolioB2324.dir
   OBJECT_FILE_DIR = CMakeFiles/EfolioB2324.dir
 
+build CMakeFiles/EfolioB2324.dir/grelha.c.o: C_COMPILER__EfolioB2324_unscanned_Debug /Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1$ Ano/Laboratorio$ de$ Programação/EfolioB2324/grelha.c || cmake_object_order_depends_target_EfolioB2324
+  DEP_FILE = CMakeFiles/EfolioB2324.dir/grelha.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/EfolioB2324.dir
+  OBJECT_FILE_DIR = CMakeFiles/EfolioB2324.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target EfolioB2324
@@ -69,7 +75,7 @@ build CMakeFiles/EfolioB2324.dir/retangulo.c.o: C_COMPILER__EfolioB2324_unscanne
 #############################################
 # Link the executable EfolioB2324
 
-build EfolioB2324: C_EXECUTABLE_LINKER__EfolioB2324_Debug CMakeFiles/EfolioB2324.dir/main.c.o CMakeFiles/EfolioB2324.dir/retangulo.c.o
+build EfolioB2324: C_EXECUTABLE_LINKER__EfolioB2324_Debug CMakeFiles/EfolioB2324.dir/main.c.o CMakeFiles/EfolioB2324.dir/retangulo.c.o CMakeFiles/EfolioB2324.dir/grelha.c.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
   OBJECT_DIR = CMakeFiles/EfolioB2324.dir
   POST_BUILD = :
