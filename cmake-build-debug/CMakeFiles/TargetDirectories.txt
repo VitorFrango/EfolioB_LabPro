@@ -1,0 +1,3 @@
+/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/EfolioB2324/cmake-build-debug/CMakeFiles/EfolioB2324.dir
+/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/EfolioB2324/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/EfolioB2324/cmake-build-debug/CMakeFiles/rebuild_cache.dir
