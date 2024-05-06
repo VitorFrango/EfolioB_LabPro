@@ -136,4 +136,44 @@ void Retangulo_desenharLinhasVerticais(int coordenadaX, int coordenadaY, int com
 
 };
 
+void Retangulo_desenharLinhasHorizontais(int coordenadaX, int coordenadaY, int comprimento, int altura)
+{
+    for (int i = 0; i < comprimento; i++)
+        {
+            grelha[coordenadaY][coordenadaX+i] = vertice;
+            grelha[coordenadaY-altura+1][coordenadaX+i] = vertice;
+        }
+};
+
+int Retangulo_retanguloDentroLimites(int coordenadaX, int coordenadaY, int comprimento, int altura)
+{
+    if (coordenadaX + comprimento > 80 || coordenadaY + altura > 25)
+    {
+        return 0;
+    }
+    return 1;
+};
+
+void Retangulo_aplicarGravidade(struct Retangulo *Retangulo_retangulo){
+    int coordenadaFinal;
+
+    for (int i = Retangulo_retangulo->coordenadaX; i < Retangulo_retangulo->comprimento + Retangulo_retangulo->coordenadaX; i++)
+    {
+        /*
+        Se a coordenada não estiver vazia é decrementado a variável minCoordenadaY e volta a chamar a função recursivamente
+        para verificar novamente a próxima linha. Assim que tiver uma linha "livre" corrige as coordanas do retangulo colocado
+        como parâmetro.
+        */
+        if (grelha[minCoordenadaY][i] != ' ') {
+            minCoordenadaY--;
+            Retangulo_aplicarGravidade(Retangulo_retangulo);
+            return;
+        };
+    };
+
+
+    coordenadaFinal = minCoordenadaY - Retangulo_retangulo->altura+1;
+    Retangulo_retangulo->coordenadaY = coordenadaFinal;
+    minCoordenadaY = 25;
+};
 
