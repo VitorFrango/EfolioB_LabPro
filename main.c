@@ -3,13 +3,13 @@
 #include <stdbool.h>
 #include <string.h>
 
-int main(){
+int main() {
     char comando[100];
     int x, y, l, h, p;
 
     while (1) {
         printf("Digite um comando: ");
-        fgets (comando, sizeof(comando), stdin);
+        fgets(comando, sizeof(comando), stdin);
 
         // processar comando
         if (sscanf(comando, "criar %d %d %d %d", &x, &y, &l, &h) == 4) {
@@ -24,3 +24,4 @@ int main(){
 
 
     }
+}

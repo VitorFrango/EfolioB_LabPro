@@ -5,8 +5,8 @@
 #include "retangulo.h"
 #include <stdio.h>
 
-extern Retangulo retangulos[MAX_RETANGULOS];  // Array de retângulos
-extern int retangulo_conta; // Contador de retângulos
+Retangulo retangulos[MAX_RETANGULOS];  // Array de retângulos
+int retangulo_conta; // Contador de retângulos
 
 void desenhar_grelha() {
     char world[MAX_ALTURA + 1][MAX_LARGURA + 1];

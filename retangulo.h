@@ -19,7 +19,7 @@ typedef struct Retangulo {
 } Retangulo;
 
 void criar_retangulo(int x , int y, int largura, int altura);
-void mover_retangulo(int x, int y, desvio, bool correto);
+void mover_retangulo(int x, int y, int desvio, bool correto);
 void desenhar_grelha(void);
 void aplicar_gravidade(void);
 
