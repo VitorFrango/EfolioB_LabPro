@@ -177,3 +177,35 @@ void Retangulo_aplicarGravidade(struct Retangulo *Retangulo_retangulo){
     minCoordenadaY = 25;
 };
 
+// Função para deformar o retângulo
+void Retangulo_deformarRetangulo(struct Retangulo *Retangulo_retangulo){
+    int coorndenadaInicial = Retangulo_retangulo->coordenadaY;
+    int alturaInicial = Retangulo_retangulo->altura;
+    int alturaFinal = Retangulo_retangulo->altura;
+    int coordenadaFinal;
+    int alturaQueda;
+    int razaoAchatamento;
+
+    /*
+     * É usada a função gravidade para podermos saber a altura de
+     * queda usando a coordenada corrigida por esta função
+     * */
+    Retangulo_aplicarGravidade(Retangulo_retangulo);
+
+    coordenadaFinal = Retangulo_retangulo->coordenadaY;
+    alturaQueda = coorndenadaInicial - coordenadaFinal;
+
+    /*
+     *
+     * calculado o valor da  razao de 10% por unidade de eixo dos YY da altura de queda
+     * usando a coordenada corrigida por esta função
+     * */
+
+    razaoAchatamento = round(alturaInicial * (alturaQueda * 0.1));
+
+    printf("Achatamento: %i  Altura Inicial: %i  AlturaQueda: %i Coordenada Final: %i  "
+           "Coordenada Inicial: %i", razaoAchatamento, alturaInicial, alturaQueda,
+           coordenadaFinal, coordenadaInicial);
+
+    //Se a razão de achatamento for maior que a altua do retangu
+}
