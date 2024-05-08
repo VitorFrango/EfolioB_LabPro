@@ -6,11 +6,14 @@
 #include "retangulo.h"
 
 
+// A grelha é criada com 25 elementos no eixo dos yy
+// para contemplar a impressão dos valores das coordenadas do eixo dos xx.
 void Grelha_createCoordenadas(){
 
     int numeroGrid = 0;
     int m = 1;
 
+    // inicializa a grelha com espaços vazios
     for (int i = 0; i <= 26; i++)
     {
         for (int j = 0; j <= 82; j++)
@@ -21,6 +24,7 @@ void Grelha_createCoordenadas(){
 
     }
 
+    // preenche a grelha com os valores das coordena
     for (int k = 2; k <= 81; k++)
     {
 

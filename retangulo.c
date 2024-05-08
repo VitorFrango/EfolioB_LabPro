@@ -7,9 +7,9 @@
 char vertice = '+';
 char linhaVertical ='|';
 char linhaHorizontal = '-';
-char grelha[27][82];
-int minCoordenadaY = 25;
-int numeroRetangulos = 0;
+char grelha[25][80];  // 25x80
+int minCoordenadaY = 25; //Valor máximo do eixo dos yy
+int numeroRetangulos = 0; //Contador de retângulos
 
 //Atenção, ver se na minha lógica quando movo o retangulo de baixo se o de cima volta a cair.
 
@@ -28,12 +28,12 @@ void Retangulo_criarRetangulo(){
         do
         {
             printf("Inserir Coordenada X:");
-
+            //Verifica se o utilizador insere um número e não letras ou caracteres especiais
             if(scanf("%i", &coordenadaX) != 1){
                 printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
                 return;
             };
-
+            //Verifica se a coordenada X é maior que 80
             if (coordenadaX > 80)
             {
                 printf("\n!!!-----A coordenada X não pode ser maior que 80-----!!!\n");
@@ -45,11 +45,13 @@ void Retangulo_criarRetangulo(){
         {
             printf("Inserir Coordenada Y:");
 
+            //Verifica se o utilizador insere um número e não letras ou caracteres especiais
             if(scanf("%i", &coordenadaY) != 1){
                 printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
                 return;
             };
 
+            //Verifica se a coordenada Y é maior que 25
             if (coordenadaY > 25)
             {
                 printf("\n!!!-----A coordenada Y não pode ser maior que 25-----!!!\n");
@@ -61,11 +63,13 @@ void Retangulo_criarRetangulo(){
         {
             printf("Inserir o comprimento:");
 
+            //Verifica se o utilizador insere um número e não letras ou caracteres especiais
             if(scanf("%i", &comprimento) != 1){
                 printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
                 return;
             };
 
+            //Verifica se o comprimento é menor que 2 ou maior que 80
             if (comprimento < 2 || comprimento > 80)
             {
                 printf("!!!-----O comprimento não pode ser menor que 2 ou maior que 80!-----!!!\n");
@@ -82,6 +86,7 @@ void Retangulo_criarRetangulo(){
                 return;
             };
 
+            //Verifica se a altura é menor que 2 ou maior que 25
             if (altura <= 1 || altura > 25)
             {
                 printf("!!!-----A altura não pode ser menor que 2 ou maior que 25!-----!!!\n");
@@ -89,7 +94,7 @@ void Retangulo_criarRetangulo(){
     
         } while (altura <= 1 || altura > 25);
 
-
+        //Verifica se o retângulo está dentro dos limites da grelha
         dentroDosLimites = Retangulo_retanguloDentroDosLimites(coordenadaX, coordenadaY, comprimento, altura);
 
         if (dentroDosLimites == 0)
@@ -102,6 +107,12 @@ void Retangulo_criarRetangulo(){
     } while (dentroDosLimites == 0);
 
     Retangulo_retangulo = malloc(sizeof(Retangulo));
+    //Alocar memória para o retângulo e verificar se a alocação foi bem sucedida
+    if (Retangulo_retangulo == NULL) {
+        fprintf(stderr, "Falha ao alocar memoria .\n");
+        return;
+    }
+    //Guarda os valores inseridos pelo utilizador no retângulo
     Retangulo_retangulo->coordenadaX = coordenadaX;
     Retangulo_retangulo->coordenadaY = coordenadaY;
     Retangulo_retangulo->comprimento = comprimento;
