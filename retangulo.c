@@ -205,7 +205,35 @@ void Retangulo_deformarRetangulo(struct Retangulo *Retangulo_retangulo){
 
     printf("Achatamento: %i  Altura Inicial: %i  AlturaQueda: %i Coordenada Final: %i  "
            "Coordenada Inicial: %i", razaoAchatamento, alturaInicial, alturaQueda,
-           coordenadaFinal, coordenadaInicial);
+           coordenadaFinal, coorndenadaInicial);
 
-    //Se a razão de achatamento for maior que a altua do retangu
-}
+    //Se a razão de achatamento for maior que a altua do retangulo a altuta fuca igual a 1
+    if (razaoAchatamento >= Retangulo_retangulo->altura)
+    {
+        alturaFinal = 1;
+        Retangulo_retangulo->altura = alturaFinal;
+    } else if (razaoAchatamento < Retangulo_retangulo->altura)
+    {
+        // removido o valor da razão de achatamento à altura do retângulo
+        alturaFinal = Retangulo_retangulo->altura - razaoAchatamento;
+        Retangulo_retangulo->altura = alturaFinal;
+    }
+    Retangulo_aplicarGravidade(Retangulo_retangulo);
+};
+
+void Retangulo_redesenharRetangulo(struct Retangulo *Retangulo_retangulo){
+    Retangulo_desenharLinhasVerticais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
+    Retangulo_desenharLinhasHorizontais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
+};
+
+void Retangulo_apagarRetangulo(struct Retangulo *Retangulo_retangulo){
+
+
+int coordenadaX = Retangulo_retangulo->coordenadaX;
+int coordenadaY = Retangulo_retangulo->coordenadaY;
+int comprimento = Retangulo_retangulo->comprimento;
+int altura = Retangulo_retangulo->altura;
+
+  // vai se às coordenadas do retanngulo pretendido e coloca se '' para simulaer o apagara
+    for ( int = 0; i < altura; i++)
+};

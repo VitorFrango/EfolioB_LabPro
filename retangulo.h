@@ -48,7 +48,7 @@ void Retangulo_aplicarGravidade(struct Retangulo *Retangulo_retangulo); // Aplic
 void Retangulo_deformarRetangulo(struct Retangulo *Retangulo_retangulo);
 void Retangulo_criarRetangulo();
 void Retangulo_apagarRetangulo(struct Retangulo *Retangulo_retangulo);
-void Retangulo_redefinirRetangulo(struct Retangulo *Retangulo_retangulo);
+void Retangulo_redesenharRetangulo(struct Retangulo *Retangulo_retangulo);
 // retorna 1 se puder mover, 0 se não puder mover
 int Retangulo_verSePodeMoverEsquerda(int coordenadaX, int altura, int numeroMovimentos);
 // retorna 1 se puder mover, 0 se não puder mover
