@@ -1,153 +1,166 @@
-//
-// Created by Vitor Frango on 06/05/2024.
-//
-
-#include "retangulo.h"
-#include "grelha.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "retangulo.h"
+#include "grelha.h"
 
+char vertice = '+';
+char linhaVertical ='|';
+char linhaHorizontal = '-';
+char grelha[27][82];
+int minCoordenadaY = 25;
+int numeroRetangulos = 0;
 
-char vertice = '+'; // Variável para guardar o vértice do retângulo
-char linhaVertical = '|'; // Variável para guardar a linha vertical do retângulo
-char linhaHorizontal = '-'; // Variável para guardar a linha horizontal do retângulo
-char grelha[27][82]; // Array de caracteres para guardar a grelha
-int minCoordenadaY = 25 ; // Variável para guardar a coordenada Y mínima do retângulo
-int numeroRetangulos = 0; // Variável para guardar o número de retângulos
+//Atenção, ver se na minha lógica quando movo o retangulo de baixo se o de cima volta a cair.
 
-void Retangulo_CriarRetangulo() {
+void Retangulo_criarRetangulo(){
 
     int coordenadaX;
     int coordenadaY;
     int comprimento;
     int altura;
     int dentroDosLimites;
+         
+    printf("-----Inserir Coordenadas do Retângulo-----\n");
 
-    printf(" Inserir as coordenadas do retângulo: ");
+    do
+    {
+        do
+        {
+            printf("Inserir Coordenada X:");
 
-    do {
-        do {
-            printf("Inserir a coordenada X:");
-
-            if (scanf("%i", &coordenadaX) != 1) {
-                printf("\n Não pode inserir letras ou caracteres especiais, tente novamente\n");
+            if(scanf("%i", &coordenadaX) != 1){
+                printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
                 return;
             };
 
-            if (coordenadaX > 80) {
-                printf("\n A coordenada X não pode ser maior que 80, tente novamente\n");
-            }
-        } while (coordenadaX > 80);
-
-        do {
-            printf("Inserir a coordenada Y:");
-
-            if (scanf("%i", &coordenadaY) != 1) {
-                printf("\n Não pode inserir letras ou caracteres especiais, tente novamente\n");
-                return;
-            };
-
-            if (coordenadaY > 25) {
-                printf("\n A coordenada Y não pode ser maior que 25, tente novamente\n");
-            }
-        } while (coordenadaY > 25);
-
-        do {
-            printf("Inserir o comprimento do retângulo:");
-            if (scanf("%i", &comprimento) != 1) {
-                printf("\n Não pode inserir letras ou caracteres especiais, tente novamente\n");
-                return;
-            };
-            if (comprimento < 2 || comprimento > 80)
-                ;
+            if (coordenadaX > 80)
             {
-                printf("\n O comprimento do retângulo tem de ser maior que 2 e menor que 80, tente novamente\n");
+                printf("\n!!!-----A coordenada X não pode ser maior que 80-----!!!\n");
+            }
+        
+        } while (coordenadaX > 80);
+    
+        do
+        {
+            printf("Inserir Coordenada Y:");
+
+            if(scanf("%i", &coordenadaY) != 1){
+                printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+                return;
             };
-        } while (comprimento < 2 || comprimento > 80);
+
+            if (coordenadaY > 25)
+            {
+                printf("\n!!!-----A coordenada Y não pode ser maior que 25-----!!!\n");
+            }
+        
+        } while (coordenadaY > 25);
 
         do
         {
-            printf("Inserir a altura do retângulo:");
-            if (scanf("%i", &altura) != 1) {
-                printf("\n Não pode inserir letras ou caracteres especiais, tente novamente\n");
+            printf("Inserir o comprimento:");
+
+            if(scanf("%i", &comprimento) != 1){
+                printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
                 return;
             };
-            if (altura < 2 || altura > 25)
-                ;
+
+            if (comprimento < 2 || comprimento > 80)
             {
-                printf("\n A altura do retângulo tem de ser maior que 2 e menor que 25, tente novamente\n");
+                printf("!!!-----O comprimento não pode ser menor que 2 ou maior que 80!-----!!!\n");
+            };
+    
+        }while (comprimento < 2 || comprimento > 80);
+
+        do
+        {
+            printf("Inserir a altura:");
+
+            if(scanf("%i", &altura) != 1){
+                printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+                return;
             };
 
-        } while (altura < 2 || altura > 25);
-
-        dentroDosLimites = Retangulo_retanguloDentroLimites(coordenadaX, coordenadaY, comprimento, altura);
-
-        if (dentroDosLimites == 0) {
-            printf("\n O retângulo não pode ser desenhado fora dos limites da grelha, tente novamente\n");
-            printf("\n A grelha tem 80 de comprimento e 25 de largura\n");
-        };
-
-    }while (dentroDosLimites == 0);
-
-        Retangulo_retangulo = malloc(sizeof(Retangulo));
-        Retangulo_retangulo->coordenadaX = coordenadaX;
-        Retangulo_retangulo->coordenadaY = coordenadaY;
-        Retangulo_retangulo->comprimento = comprimento;
-        Retangulo_retangulo->altura = altura;
-        Greha_corrigirCoordenadas(Retangulo_retangulo);
-
-        Retangulo_deformarRetangulo(Retangulo_retangulo);
-        Retangulo_desenharLinhasVerticais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
-        Retangulo_desenharLinhasHorizontais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
-        Retangulo_retangulos[numeroRetangulos] = Retangulo_retangulo;
-        numeroRetangulos++;
-    };
-
-    int Retangulo_retanguloExiste(int coordenadaX, int coordenadaY) {
-        Retangulo *retanguloAtual;
-
-        for (int i = 0; i < numeroRetangulos; i++)
-        {
-            retanguloAtual = Retangulo_retangulos[i];
-            if (coordenadaX >= retanguloAtual->coordenadaX && coordenadaX <= retanguloAtual->coordenadaX + retanguloAtual->comprimento && coordenadaY >= retanguloAtual->coordenadaY && coordenadaY <= retanguloAtual->coordenadaY + retanguloAtual->altura)
+            if (altura <= 1 || altura > 25)
             {
-                return 1;
-            }
+                printf("!!!-----A altura não pode ser menor que 2 ou maior que 25!-----!!!\n");
+            };
+    
+        } while (altura <= 1 || altura > 25);
+
+
+        dentroDosLimites = Retangulo_retanguloDentroDosLimites(coordenadaX, coordenadaY, comprimento, altura);
+
+        if (dentroDosLimites == 0)
+        {
+            printf("\n!!!-----Retangulo fora dos limites da grelha-----!!!\n");
+            printf("A grelha tem 80 de comprimento e 25 de largura. Coloque os dados novamente pff.\n");
+        };
+    
+
+    } while (dentroDosLimites == 0);
+
+    Retangulo_retangulo = malloc(sizeof(Retangulo));
+    Retangulo_retangulo->coordenadaX = coordenadaX;
+    Retangulo_retangulo->coordenadaY = coordenadaY;
+    Retangulo_retangulo->comprimento = comprimento;
+    Retangulo_retangulo->altura = altura;
+    Grelha_corrigirCoordenadas(Retangulo_retangulo);
+
+    Retangulo_deformarRetangulo(Retangulo_retangulo);
+    Retangulo_desenharLinhasVerticais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
+    Retangulo_desenharLinhasHorizontais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY,Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
+
+    Retangulo_retangulos[numeroRetangulos] = Retangulo_retangulo;
+
+    numeroRetangulos++;
+};
+
+int Retangulo_retanguloExiste(int coordenadaX, int coordenadaY){
+    Retangulo *retanguloAtual;
+
+    for (int i = 0; i < numeroRetangulos; i++)
+    {
+        retanguloAtual = Retangulo_retangulos[i];
+        if (retanguloAtual->coordenadaX == coordenadaX && retanguloAtual->coordenadaY == coordenadaY)
+        {
+            return 1;
         }
-        return 0;
+        
+    }
+    
+    return 0;
+};
 
-    };
+void Retangulo_desenharLinhasVerticais(int coordenadaX, int coordenadaY, int comprimento, int altura){
 
-void Retangulo_desenharLinhasVerticais(int coordenadaX, int coordenadaY, int comprimento, int altura)
+    //Desenha as linhas verticais e se estiver no inicio ou no fim da linha, desenha o simbolo do vertice
+    for (int i = 0; i < altura; i++)
     {
-    for (int i =0; i < altura; i++)
-    {
-        if(i == 0 || i==altura-1)
+        if (i==0 || i==altura-1)
         {
             grelha[coordenadaY+i][coordenadaX] = vertice;
-            grelha[coordenadaY+i][coordenadaX+comprimento-1] = vertice;
+            grelha[coordenadaY+i][coordenadaX + comprimento-1] = vertice;
             continue;
         }
-            grelha[coordenadaY-i][coordenadaX] = linhaVertical;
-            grelha[coordenadaY-i][coordenadaX+comprimento-1] = linhaVertical;
+        grelha[coordenadaY+i][coordenadaX] = linhaVertical;
+        grelha[coordenadaY+i][coordenadaX + comprimento-1] = linhaVertical;
     }
-
+    
 };
 
-void Retangulo_desenharLinhasHorizontais(int coordenadaX, int coordenadaY, int comprimento, int altura)
-{
-    for (int i = 0; i < comprimento; i++)
-        {
-            grelha[coordenadaY][coordenadaX+i] = vertice;
-            grelha[coordenadaY-altura+1][coordenadaX+i] = vertice;
-        }
+void Retangulo_desenharLinhasHorizontais(int coordenadaX, int coordenadaY, int comprimento, int altura){
+    for (int i = 1; i < comprimento-1; i++)
+    {
+        grelha[coordenadaY][coordenadaX + i] = linhaHorizontal;
+        grelha[coordenadaY+altura-1][coordenadaX +i] = linhaHorizontal;
+    }
 };
 
-int Retangulo_retanguloDentroLimites(int coordenadaX, int coordenadaY, int comprimento, int altura)
-{
-    if (coordenadaX + comprimento > 80 || coordenadaY + altura > 25)
+int Retangulo_retanguloDentroDosLimites(int coordenadaX, int coordenadaY, int comprimento, int altura){
+    
+    if (coordenadaY - altura < 0 || coordenadaX + comprimento > 80)
     {
         return 0;
     }
@@ -156,15 +169,16 @@ int Retangulo_retanguloDentroLimites(int coordenadaX, int coordenadaY, int compr
 
 void Retangulo_aplicarGravidade(struct Retangulo *Retangulo_retangulo){
     int coordenadaFinal;
-
+ 
     for (int i = Retangulo_retangulo->coordenadaX; i < Retangulo_retangulo->comprimento + Retangulo_retangulo->coordenadaX; i++)
     {
         /*
         Se a coordenada não estiver vazia é decrementado a variável minCoordenadaY e volta a chamar a função recursivamente
-        para verificar novamente a próxima linha. Assim que tiver uma linha "livre" corrige as coordanas do retangulo colocado
+        para verificar novamente a próxima linha. Assim que tiver uma linha "livre" corrige as coordanas do retangulo colocado 
         como parâmetro.
         */
-        if (grelha[minCoordenadaY][i] != ' ') {
+        if (grelha[minCoordenadaY][i] != ' ')
+        {
             minCoordenadaY--;
             Retangulo_aplicarGravidade(Retangulo_retangulo);
             return;
@@ -177,9 +191,9 @@ void Retangulo_aplicarGravidade(struct Retangulo *Retangulo_retangulo){
     minCoordenadaY = 25;
 };
 
-// Função para deformar o retângulo
 void Retangulo_deformarRetangulo(struct Retangulo *Retangulo_retangulo){
-    int coorndenadaInicial = Retangulo_retangulo->coordenadaY;
+
+    int coordenadaInicial = Retangulo_retangulo->coordenadaY;
     int alturaInicial = Retangulo_retangulo->altura;
     int alturaFinal = Retangulo_retangulo->altura;
     int coordenadaFinal;
@@ -187,53 +201,289 @@ void Retangulo_deformarRetangulo(struct Retangulo *Retangulo_retangulo){
     int razaoAchatamento;
 
     /*
-     * É usada a função gravidade para podermos saber a altura de
-     * queda usando a coordenada corrigida por esta função
-     * */
+     É usada a função de aplicar gravidade para podermos saber a altura de queda, usando a a coordenada corrigida por esta função.
+     */
     Retangulo_aplicarGravidade(Retangulo_retangulo);
-
+    
     coordenadaFinal = Retangulo_retangulo->coordenadaY;
-    alturaQueda = coorndenadaInicial - coordenadaFinal;
+    alturaQueda = coordenadaFinal - coordenadaInicial;
 
     /*
-     *
-     * calculado o valor da  razao de 10% por unidade de eixo dos YY da altura de queda
-     * usando a coordenada corrigida por esta função
-     * */
+    Calculado o valor da razão de  10% por unidade do eixo dos yy da altura de queda e multiplicado à altura inicial
+    para se calcular a percentagem de queda da altura inicial.
+    */
 
     razaoAchatamento = round(alturaInicial * (alturaQueda * 0.1));
 
-    printf("Achatamento: %i  Altura Inicial: %i  AlturaQueda: %i Coordenada Final: %i  "
-           "Coordenada Inicial: %i", razaoAchatamento, alturaInicial, alturaQueda,
-           coordenadaFinal, coorndenadaInicial);
+    printf("Achatamento: %i  Altura Inicial: %i  AlturaQueda: %i Coordenada Final: %i  Coordenada Inicial: %i", razaoAchatamento, alturaInicial, alturaQueda, coordenadaFinal, coordenadaInicial);
 
-    //Se a razão de achatamento for maior que a altua do retangulo a altuta fuca igual a 1
+    //Se a razão de achatamento for maior que a altua do retangulo, a altura fica igual a 1.
+
     if (razaoAchatamento >= Retangulo_retangulo->altura)
     {
         alturaFinal = 1;
         Retangulo_retangulo->altura = alturaFinal;
-    } else if (razaoAchatamento < Retangulo_retangulo->altura)
+
+    }else if (razaoAchatamento < Retangulo_retangulo->altura)
     {
-        // removido o valor da razão de achatamento à altura do retângulo
-        alturaFinal = Retangulo_retangulo->altura - razaoAchatamento;
+        //Removido o valor da razão de achatamento à altura para simular a "deformação"
+        alturaFinal -= razaoAchatamento;
         Retangulo_retangulo->altura = alturaFinal;
     }
+
     Retangulo_aplicarGravidade(Retangulo_retangulo);
+      
 };
 
 void Retangulo_redesenharRetangulo(struct Retangulo *Retangulo_retangulo){
-    Retangulo_desenharLinhasVerticais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
+    Retangulo_desenharLinhasVerticais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento,Retangulo_retangulo->altura);
     Retangulo_desenharLinhasHorizontais(Retangulo_retangulo->coordenadaX, Retangulo_retangulo->coordenadaY, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
 };
 
 void Retangulo_apagarRetangulo(struct Retangulo *Retangulo_retangulo){
 
+    int coordenadaX = Retangulo_retangulo->coordenadaX;
+    int coordenadaY = Retangulo_retangulo->coordenadaY;
+    int comprimento = Retangulo_retangulo->comprimento;
+    int altura = Retangulo_retangulo->altura;
 
-int coordenadaX = Retangulo_retangulo->coordenadaX;
-int coordenadaY = Retangulo_retangulo->coordenadaY;
-int comprimento = Retangulo_retangulo->comprimento;
-int altura = Retangulo_retangulo->altura;
+    //Vai-se às coordenadas do retangulo pretendido e coloca-se ' ' para simular o "apagar"
 
-  // vai se às coordenadas do retanngulo pretendido e coloca se '' para simulaer o apagara
-    for ( int = 0; i < altura; i++)
+    for (int i = 0; i < altura; i++)
+    {
+        grelha[coordenadaY+i][coordenadaX] = ' ';
+        grelha[coordenadaY+i][coordenadaX + comprimento-1] = ' ';
+    };
+
+    for (int j = 1; j < comprimento-1; j++)
+    {
+        grelha[coordenadaY][coordenadaX + j] = ' ';
+        grelha[coordenadaY+altura-1][coordenadaX +j] = ' ';
+    }
+
+};
+
+int Retangulo_verSePodeMoverEsquerda(int coordenadaX, int altura, int numeroMovimentos){
+
+    //Verifica por coordenada y se já existe um retângulo criado para a posição desejada pelo utilizador
+    for (int i = 0; i < altura; i++)
+    {
+        for (int i = coordenadaX - numeroMovimentos; i < coordenadaX; i++)
+        {
+            if (grelha[minCoordenadaY][i] != ' ')
+            {  
+                return 0;
+            };
+        }
+        minCoordenadaY--;
+    }
+    minCoordenadaY = 25;
+    return 1;       
+};
+
+int Retangulo_verSePodeMoverDireita(int coordenadaX, int comprimento, int altura, int numeroMovimentos){
+
+    //Verifica por coordenada y se já existe um retângulo criado para a posição desejada pelo utilizador
+    for (int i = 0; i < altura; i++)
+    {
+        for (int i = coordenadaX + comprimento; i < coordenadaX + comprimento + numeroMovimentos; i++)
+        {
+            if (grelha[minCoordenadaY][i] != ' ')
+            {  
+                return 0;
+            };
+        }
+        minCoordenadaY--;
+    }
+    minCoordenadaY = 25;
+    return 1;    
+};
+
+void Retangulo_moveLeft(){
+    
+    Retangulo *retangulo;
+    int coordenadaX;
+    int coordenadaY;
+    int retanguloExiste;
+    int numeroMovimentos;
+    int dentroDosLimites;
+    int podeMover;
+    int coordenadaXcorrigida;
+    int coordenadaYcorrigida;
+
+    do
+    {
+        printf("Inserir Coordenada X do retângulo:\n");
+
+        if (scanf("%i", &coordenadaX) != 1)
+        {
+            printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+            return;
+        }
+
+        coordenadaXcorrigida = coordenadaX + 2;
+
+        if (coordenadaXcorrigida == 3)
+        {
+            printf("!!!-----Já não é possível mover este retângulo para a esquerda-----!!!");
+            return;
+        }
+    
+        printf("Inserir Coordenada Y do retângulo:\n");
+
+        if (scanf("%i", &coordenadaY) != 1)
+        {
+            printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+            return;
+        }
+
+        coordenadaYcorrigida = 26 - coordenadaY;
+
+        //Verifica se o retângulo, referente às coordenadas inseridas, existe.
+        retanguloExiste = Retangulo_retanguloExiste(coordenadaXcorrigida, coordenadaYcorrigida);
+
+        if (retanguloExiste == 0)
+        {
+            printf("\n!!!-----Para as coordenadas que inseriu não existe nenhum retângulo-----!!!\n");
+            return;
+        }
+
+        printf("Inserir número de Movimentos:\n");
+
+        if (scanf("%i", &numeroMovimentos) != 1)
+        {
+            printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+            return;
+        }
+
+        //Retorna o retângulo do array de structs através das coordenadas inseridas
+        for (int i = 0; i < numeroRetangulos; i++)
+        {
+            if (Retangulo_retangulos[i]->coordenadaX == coordenadaXcorrigida && Retangulo_retangulos[i]->coordenadaY == coordenadaYcorrigida)
+            {
+                retangulo = Retangulo_retangulos[i];
+            }
+        };
+
+        /*
+Verificar se o retângulo já se encontra no inicio do eixo dos x's, se sim, não é possivel mover mais para a esquerda.
+Verifica-se que é igual a 3 porque a grelha começa com 2 digitos para as coordenadasY, logo o seu inicio é 3.
+*/
+    
+        dentroDosLimites = Retangulo_retanguloDentroDosLimites(coordenadaXcorrigida, coordenadaYcorrigida, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
+        podeMover = Retangulo_verSePodeMoverEsquerda(coordenadaXcorrigida, retangulo->altura, numeroMovimentos);
+    
+
+        if (dentroDosLimites == 0)
+        {
+            printf("\n!!!-----Movendo o retângulo como pretende, fica fora dos limites da grelha-----!!!\n");
+        }else if (podeMover == 0)
+        {
+            printf("\n!!!-----Movendo o retângulo como pretende, vai ficar sobreposto a outro já existente-----!!!\n");
+            return;
+        }
+
+    } while (dentroDosLimites == 0 | podeMover == 0 | retanguloExiste == 0);
+
+    //Apagar o retângulo antigo
+    Retangulo_apagarRetangulo(retangulo);
+    //Subtrair o valor dos movimentos inseridos pelo utilizador à coordenada X de forma a simular o movimento
+    retangulo->coordenadaX -= numeroMovimentos;
+    Retangulo_deformarRetangulo(retangulo);
+    //Redesenhar retângulo novo na grelha
+    Retangulo_redesenharRetangulo(retangulo);
+};
+
+void Retangulo_moveRight(){
+    
+    Retangulo *retangulo;
+    int coordenadaX;
+    int coordenadaY;
+    int retanguloExiste;
+    int numeroMovimentos;
+    int dentroDosLimites;
+    int podeMover;
+    int coordenadaXcorrigida;
+    int coordenadaYcorrigida;
+
+    do
+    {
+        printf("Inserir Coordenada X do retângulo:\n");
+
+        if (scanf("%i", &coordenadaX) != 1)
+        {
+            printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+            return;
+        }
+
+        coordenadaXcorrigida = coordenadaX + 2;
+    
+        printf("Inserir Coordenada Y do retângulo:\n");
+
+        if (scanf("%i", &coordenadaY) != 1)
+        {
+            printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+            return;
+        }
+
+        coordenadaYcorrigida = 26 - coordenadaY;
+
+        //Verifica se o retângulo, referente às coordenadas inseridas, existe.
+        retanguloExiste = Retangulo_retanguloExiste(coordenadaXcorrigida, coordenadaYcorrigida);
+
+        if (retanguloExiste == 0)
+        {
+            printf("\n!!!-----Para as coordenadas que inseriu não existe nenhum retângulo-----!!!\n");
+            return;
+        }
+
+        printf("Inserir número de Movimentos:\n");
+
+        if (scanf("%i", &numeroMovimentos) != 1)
+        {
+            printf("\n!!!-----Não pode inserir letras ou caracteres especiais, apenas números-----!!!\n");
+            return;
+        }
+
+        //Retorna o retângulo do array de structs através das coordenadas inseridas
+        for (int i = 0; i < numeroRetangulos; i++)
+        {
+            if (Retangulo_retangulos[i]->coordenadaX == coordenadaXcorrigida && Retangulo_retangulos[i]->coordenadaY == coordenadaYcorrigida)
+            {
+                retangulo = Retangulo_retangulos[i];
+            }
+        };
+
+        /*
+Verificar se o retângulo já se encontra no inicio do eixo dos x's, se sim, não é possivel mover mais para a direita.
+Verifica-se que é igual a 3 porque a grelha começa com 2 digitos para as coordenadasY, logo o seu inicio é 3.
+*/
+        if (coordenadaXcorrigida == 80)
+        {
+            printf("!!!-----Já não é possível mover este retângulo para a direita-----!!!");
+            return;
+        }
+    
+        dentroDosLimites = Retangulo_retanguloDentroDosLimites(coordenadaXcorrigida, coordenadaYcorrigida, Retangulo_retangulo->comprimento, Retangulo_retangulo->altura);
+        podeMover = Retangulo_verSePodeMoverDireita(coordenadaXcorrigida, retangulo->comprimento, retangulo->altura, numeroMovimentos);
+
+        if (dentroDosLimites == 0)
+        {
+            printf("\n!!!-----Movendo o retângulo como pretende, fica fora dos limites da grelha-----!!!\n");
+        }else if (podeMover == 0)
+        {
+            printf("\n!!!-----Movendo o retângulo como pretende, vai ficar sobreposto a outro já existente-----!!!\n");
+            return;
+        }
+
+    } while (dentroDosLimites == 0 | podeMover == 0 | retanguloExiste == 0);
+
+    //Apagar o retângulo antigo
+    Retangulo_apagarRetangulo(retangulo);      
+    //Subtrair o valor dos movimentos inseridos pelo utilizador à coordenada X de forma a simular o movimento
+    retangulo->coordenadaX += numeroMovimentos;
+    Retangulo_deformarRetangulo(retangulo);
+    //Redesenhar retângulo novo na grelha
+    Retangulo_redesenharRetangulo(retangulo);
+        
 };

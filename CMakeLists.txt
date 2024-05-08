@@ -7,4 +7,9 @@ add_executable(EfolioB2324 main.c
         retangulo.h
         retangulo.c
         grelha.c
-        grelha.h)
+        grelha.h
+        menu.c
+        menu.h
+
+
+)

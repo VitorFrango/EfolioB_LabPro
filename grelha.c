@@ -1,62 +1,86 @@
 //
 // Created by Vitor Frango on 06/05/2024.
 //
-
-#include "retangulo.h"
 #include <stdio.h>
+#include "grelha.h"
+#include "retangulo.h"
 
-Retangulo retangulos[MAX_RETANGULOS];  // Array de retângulos
-int retangulo_conta; // Contador de retângulos
 
-void desenhar_grelha() {
-    char world[MAX_ALTURA + 1][MAX_LARGURA + 1];
-    // Inicializar mundo com espaços em branco
-    for (int i = 0; i <= MAX_ALTURA; i++) {
-        for (int j = 0; j <= MAX_LARGURA; j++) {
-            world[i][j] = ' ';
+void Grelha_createCoordenadas(){
+
+    int numeroGrid = 0;
+    int m = 1;
+
+    for (int i = 0; i <= 26; i++)
+    {
+        for (int j = 0; j <= 82; j++)
+        {
+            grelha[i][j] = ' ';
+
         }
+
     }
 
-    // Desenhar retângulos
-    for (int i = 0; i < retangulo_conta; i++) {
-        for (int h = 0; h < retangulos[i].altura; h++) {
-            for (int w = 0; w < retangulos[i].largura; w++) {
-                int drawX = retangulos[i].x + w;
-                int drawY = retangulos[i].y - h;
-                if (drawX > 0 && drawX <= MAX_LARGURA && drawY > 0 && drawY <= MAX_ALTURA) {
-                    world[drawY][drawX] = 'x';
-                }
-            }
+    for (int k = 2; k <= 81; k++)
+    {
+
+        if (numeroGrid == 10)
+        {
+            numeroGrid = 0;
         }
-    }
 
-    // Imprimir o mundo
-    for (int i = MAX_ALTURA; i > 0; i--) {
-        for (int j = 1; j <= MAX_LARGURA; j++) {
-            putchar(world[i][j]);
+        grelha[26][k] = numeroGrid + '0';
+
+        numeroGrid++;
+    };
+
+    for (int l = 25; l > 0; l--)
+    {
+        if (l < 10)
+        {
+            sprintf(&grelha[m][0], " %i", l);
+            m++;
+            continue;
+        };
+
+        sprintf(&grelha[m][0], "%i", l);
+        m++;
+    }
+};
+
+void Grelha_corrigirCoordenadas(struct Retangulo *Retangulo_retangulo){
+
+    //Adiciona 2 ao eixo dos x's para compensar os dois primeiros campos que estão a ser usados com os digitos das coordenadas Y
+    Retangulo_retangulo->coordenadaX += 2;
+    /*
+    Aqui subtrai-se por 26 porque é o número total das coordenadas Y, onde 1 é usada com os digitos das coordenadas X.
+    Subtrai-se porque os valores no eixo dos Y começam no 25 e vão descendo. Num array bidimensional o valor equivalente ao 25 é 0,
+     logo temos que subtrair para corrigir a coordenada inserida pelo utilizado.
+    */
+    Retangulo_retangulo->coordenadaY = 26 - Retangulo_retangulo->coordenadaY;
+};
+
+void Grelha_printGrelha (){
+
+    /*
+Antes de imprimir todos os retângulos novamente, faz-se uma iteração por todos os retângulos para
+acertar eventuais coordenadas, aplicando a deformação e a gravidade em retângulos que poderão já não ter outro por baixo.
+*/
+    for (int i = 0; i < numeroRetangulos; i++)
+    {
+        Retangulo_apagarRetangulo(Retangulo_retangulos[i]);
+        Retangulo_deformarRetangulo(Retangulo_retangulos[i]);
+        Retangulo_redesenharRetangulo(Retangulo_retangulos[i]);
+    };
+
+
+    for (int i = 0; i <= 26; i++)
+    {
+        for (int j = 0; j <= 81; j++)
+        {
+
+            printf("%c", grelha[i][j]);
         }
-        putchar('\n');
+        printf("\n");
     }
-}
-
-
-void aplicar_gravidade() {
-    for (int i = 0; i < retangulo_conta; i++) {
-        while (retangulos[i].y > 1) {
-            bool canFall = true;
-            for (int j = 0; j < retangulo_conta; j++) {
-                if (i != j && retangulos[i].x < retangulos[j].x + retangulos[j].largura &&
-                    retangulos[i].x + retangulos[i].largura > retangulos[j].x &&
-                    retangulos[i].y - 1 == retangulos[j].y + retangulos[j].altura) {
-                    canFall = false;
-                    break;
-                }
-            }
-            if (canFall)
-                retangulos[i].y--;
-            else
-                break;
-        }
-    }
-}
-
+};
