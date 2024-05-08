@@ -24,7 +24,7 @@ void Grelha_createCoordenadas(){
 
     }
 
-    // preenche a grelha com os valores das coordena
+    // ppreenchimento dos valores das coordenadas no eixo dos xx
     for (int k = 2; k <= 81; k++)
     {
 
@@ -38,6 +38,7 @@ void Grelha_createCoordenadas(){
         numeroGrid++;
     };
 
+    // preenchimento dos valores das coordenadas no eixo dos yy
     for (int l = 25; l > 0; l--)
     {
         if (l < 10)
@@ -52,6 +53,7 @@ void Grelha_createCoordenadas(){
     }
 };
 
+// Corrige a coordenadas, de forma a que o input do user seja refletido na grelha corretamente.
 void Grelha_corrigirCoordenadas(struct Retangulo *Retangulo_retangulo){
 
     //Adiciona 2 ao eixo dos x's para compensar os dois primeiros campos que estão a ser usados com os digitos das coordenadas Y
@@ -64,6 +66,8 @@ void Grelha_corrigirCoordenadas(struct Retangulo *Retangulo_retangulo){
     Retangulo_retangulo->coordenadaY = 26 - Retangulo_retangulo->coordenadaY;
 };
 
+
+// Função para imprimir o array bidimencional "grelha"
 void Grelha_printGrelha (){
 
     /*

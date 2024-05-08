@@ -11,7 +11,7 @@
  A grelha é criada com 25 elementos no eixo dos yy para contemplar a impressão dos valores das coordenadas do eixo dos xx.
  A grelha é criada com 80 elementos no eixo dos xx para contemplar a impressão dos valores das coordenadas do eixo dos yy.
  */
-char grelha[25][80];  // 25x80
+char grelha[27][83];  // 25x80
 
 /*
  Esta função guarda nos indexes certos os valores das coordenadas nos eixos dos xx e yy.

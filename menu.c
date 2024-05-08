@@ -20,32 +20,33 @@ void initMenu(){
 
     do{
         printf("\n-------Menu Principal-------\n");
-        printf("a. Criar Retângulo\n");
-        printf("b. Mover Retângulo para a Direita\n");
-        printf("c. Mover Retângulo para a Esquerda\n");
-        printf("d. Mostrar Grelha\n");
-        printf("e. Sair\n");
+        printf("1. Criar Retângulo\n");
+        printf("2. Mover Retângulo para a Direita\n");
+        printf("3. Mover Retângulo para a Esquerda\n");
+        printf("4. Mostrar Grelha\n");
+        printf("5. Sair\n");
         scanf("%c",&opcaoEscolhida);
 
         switch(opcaoEscolhida){
 
-            case 'a':
+            case '1':
                 Retangulo_criarRetangulo();
                 fflush(stdin);
                 break;
-            case 'b':
+            case '2':
                 Retangulo_moveRight();
                 fflush(stdin);
                 break;
-            case'c':
+            case'3':
                 Retangulo_moveLeft();
                 fflush(stdin);
                 break;
-            case'd':
+            case'4':
+
                 Grelha_printGrelha();
                 fflush(stdin);
                 break;
-            case'e':
+            case'5':
                 fflush(stdin);
                 break;
             default:
@@ -53,5 +54,5 @@ void initMenu(){
                 fflush(stdin);
                 break;
         }
-    }while(opcaoEscolhida != 'e');
+    }while(opcaoEscolhida != '5');
 };
