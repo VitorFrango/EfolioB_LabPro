@@ -1,7 +1,3 @@
-//
-// Created by Vitor Frango on 06/05/2024.
-//
-
 #ifndef RETANGULO_H
 #define RETANGULO_H
 
@@ -37,8 +33,8 @@ void Retangulo_desenharLinhasHorizontais();
   Verifica se está dentro dos valores máximos da grelha.
 */
 int Retangulo_retanguloDentroDosLimites();
-/*Verifica, desde a primeira coordenada dos X's, se existe já outro retangulo desenhado, linha a linha.
-Se existir, aumenta em 1 a coordenada X e volta a verificar. Assim que houver uma linha livre, a coordenada Y é ajustada e guardada.
+/*Verifica, desde a primeira coordenada dos X's, se existe já outro retangulo desenhado, linha a linha. 
+Se existir, aumenta em 1 a coordenada X e volta a verificar. Assim que houver uma linha livre, a coordenada Y é ajustada e guardada. 
 */
 void Retangulo_aplicarGravidade(struct Retangulo *Retangulo_retangulo);
 void Retangulo_deformarRetangulo(struct Retangulo *Retangulo_retangulo);
@@ -52,5 +48,4 @@ int Retangulo_verSePodeMoverDireita(int coordenadaX, int comprimento, int altura
 void Retangulo_moveLeft();
 void Retangulo_moveRight();
 
-
-#endif //EFOLIOB2324_RETANGULO_H
+#endif

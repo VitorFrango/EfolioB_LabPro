@@ -1,17 +1,13 @@
-//
-// Created by Vitor Frango on 06/05/2024.
-//
-
-#ifndef EFOLIOB2324_GRELHA_H
-#define EFOLIOB2324_GRELHA_H
+#ifndef GRELHA_H
+#define GRELHA_H
 
 #include "retangulo.h"
 
 /*
- A grelha é criada com 25 elementos no eixo dos yy para contemplar a impressão dos valores das coordenadas do eixo dos xx.
- A grelha é criada com 80 elementos no eixo dos xx para contemplar a impressão dos valores das coordenadas do eixo dos yy.
+ A grelha é criada com 27 elementos no eixo dos yy para contemplar a impressão dos valores das coordenadas do eixo dos xx.
+ A grelha é criada com 82 elementos no eixo dos xx para contemplar a impressão dos valores das coordenadas do eixo dos yy.
  */
-char grelha[27][83];  // 25x80
+char grelha[27][82];
 
 /*
  Esta função guarda nos indexes certos os valores das coordenadas nos eixos dos xx e yy.
@@ -26,4 +22,5 @@ void Grelha_corrigirCoordenadas(struct Retangulo *Retangulo_retangulo);
 //Função para imprimir o array bidimencional "grelha"
 void Grelha_printGrelha ();
 
-#endif//EFOLIOB2324_GRELHA_H
+
+#endif
