@@ -27,7 +27,7 @@ int Retangulo_retanguloExiste(int coordenadaX, int coordenadaY);
 void Retangulo_desenharLinhasVerticais();
 //Desenha as linhas horizontais do retângulo.
 void Retangulo_desenharLinhasHorizontais();
-/*ero
+/*
   Retorna 0 se tiver fora dos limites da grelha.
   Retorna 1 se tiver dentro dos limites da grelha.
   Verifica se está dentro dos valores máximos da grelha.

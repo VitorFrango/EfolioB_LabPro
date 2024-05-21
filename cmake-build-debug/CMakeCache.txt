@@ -14,6 +14,15 @@
 # EXTERNAL cache entries
 ########################
 
+//Value Computed by CMake
+AF3_BINARY_DIR:STATIC=/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/AF3/cmake-build-debug
+
+//Value Computed by CMake
+AF3_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+AF3_SOURCE_DIR:STATIC=/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/AF3
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 
@@ -30,8 +39,8 @@ CMAKE_COLOR_DIAGNOSTICS:BOOL=ON
 //No help, variable specified on the command line.
 CMAKE_CXX_COMPILER:UNINITIALIZED=g++
 
-//C compiler
-CMAKE_C_COMPILER:STRING=/usr/bin/gcc
+//No help, variable specified on the command line.
+CMAKE_C_COMPILER:UNINITIALIZED=gcc
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -131,7 +140,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=EfolioB2324
+CMAKE_PROJECT_NAME:STATIC=AF3
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -197,15 +206,6 @@ CMAKE_TAPI:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeD
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
-
-//Value Computed by CMake
-EfolioB2324_BINARY_DIR:STATIC=/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/AF3/cmake-build-debug
-
-//Value Computed by CMake
-EfolioB2324_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-EfolioB2324_SOURCE_DIR:STATIC=/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/AF3
 
 
 ########################
