@@ -6,6 +6,7 @@ set(CMAKE_C_STANDARD 11)
 add_executable(AF3 main.c
         menu.c
         grelha.c
+        retangulo.c
         retangulo.c)
 
 
