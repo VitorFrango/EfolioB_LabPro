@@ -1,0 +1,1 @@
+/usr/bin/gcc -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/AF3.dir/main.c.o CMakeFiles/AF3.dir/menu.c.o CMakeFiles/AF3.dir/grelha.c.o CMakeFiles/AF3.dir/retangulo.c.o -o AF3 
