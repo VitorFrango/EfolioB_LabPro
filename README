@@ -1,0 +1,57 @@
+Guia de Utilização do Programa de Desenho de Rectângulos
+Este programa permite criar, mover e manipular rectângulos numa grelha. Siga as instruções abaixo para inserir os seus dados correctamente e interagir com o programa.
+
+Criação de um Rectângulo
+
+Executar o Programa:
+
+Ao iniciar, insira as coordenadas e dimensões do rectângulo.
+Inserir Coordenadas:
+
+Coordenada X: Insira um número entre 0 e 80. Esta é a posição horizontal.
+Coordenada Y: Insira um número entre 0 e 25. Esta é a posição vertical.
+Inserir Dimensões:
+
+Comprimento: Insira um número entre 2 e 80. Este é o tamanho horizontal.
+Altura: Insira um número entre 2 e 25. Este é o tamanho vertical.
+Validação:
+
+Certifique-se de que o rectângulo cabe dentro dos limites da grelha (80x25).
+Evite sobreposição com rectângulos existentes.
+Mover um Rectângulo
+
+Mover para a Esquerda:
+
+Coordenada X: Insira a coordenada X do rectângulo a ser movido.
+Coordenada Y: Insira a coordenada Y do rectângulo a ser movido.
+Número de Movimentos: Insira o número de unidades para mover o rectângulo para a esquerda.
+Mover para a Direita:
+
+Coordenada X: Insira a coordenada X do rectângulo a ser movido.
+Coordenada Y: Insira a coordenada Y do rectângulo a ser movido.
+Número de Movimentos: Insira o número de unidades para mover o rectângulo para a direita.
+Notas Importantes
+
+Validação de Entrada:
+O programa solicitará que insira novamente os valores caso os dados inseridos sejam inválidos.
+Certifique-se de que os valores são numéricos e estão dentro do intervalo especificado.
+Limites da Grelha:
+A grelha tem 80 unidades de largura e 25 unidades de altura.
+Certifique-se de que os rectângulos não excedem estas dimensões e não se sobrepõem a rectângulos existentes.
+Mensagens de Erro:
+O programa exibirá mensagens de erro apropriadas caso alguma restrição seja violada.
+Exemplo de Utilização
+
+Criar um Rectângulo:
+Coordenada X: 10
+Coordenada Y: 5
+Comprimento: 15
+Altura: 10
+Mover um Rectângulo para a Esquerda:
+Coordenada X: 10
+Coordenada Y: 5
+Número de Movimentos: 3
+Mover um Rectângulo para a Direita:
+Coordenada X: 10
+Coordenada Y: 5
+Número de Movimentos: 5

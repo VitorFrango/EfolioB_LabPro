@@ -6,7 +6,7 @@
 
 char vertice = 'X';
 char linhaVertical = 'X';
-char linhaHorizontal = 'X';
+//char linhaHorizontal = 'X';
 char preenchimento = 'O';
 char grelha[27][82];
 int minCoordenadaY = 25;

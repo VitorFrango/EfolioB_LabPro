@@ -1,4 +1,4 @@
-/Users/vitorfrango/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -G "CodeBlocks - Unix Makefiles" -S "/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/AF3" -B "/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/AF3/cmake-build-debug"
+/Users/vitorfrango/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -G "CodeBlocks - Unix Makefiles" -S "/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/EfolioB2324" -B "/Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/EfolioB2324/cmake-build-debug"
 CMake Deprecation Warning:
   Support for "Extra Generators" like
 
@@ -14,7 +14,7 @@ CMake Deprecation Warning:
 -- Check for working C compiler: /usr/bin/gcc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
--- Configuring done (3.3s)
+-- Configuring done (1.2s)
 -- Generating done (0.0s)
 CMake Warning:
   Manually-specified variables were not used by the project:
@@ -22,4 +22,4 @@ CMake Warning:
     CMAKE_CXX_COMPILER
 
 
--- Build files have been written to: /Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/Laboratorio de Programação/AF3/cmake-build-debug
+-- Build files have been written to: /Users/vitorfrango/Library/CloudStorage/OneDrive-UniversidadeAberta/1 Ano/EfolioB2324/cmake-build-debug

@@ -48,4 +48,7 @@ int Retangulo_verSePodeMoverDireita(int coordenadaX, int comprimento, int altura
 void Retangulo_moveLeft();
 void Retangulo_moveRight();
 
+// merge para efolioB
+void merge_retangulos(int l, int m, int r);
+
 #endif
