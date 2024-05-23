@@ -132,7 +132,7 @@ void Retangulo_desenharLinhasVerticais(int coordenadaX, int coordenadaY, int com
     }
 }
 
-void Retangulo_desenharLinhasHorizontais(int coordenadaX, int coordenadaY, int comprimento, int altura) {
+void Retangulo_desenharLinhasHorizontais(int X, int Y, int l, int ) {
     // The horizontal lines are drawn by the vertical lines function.
 }
 
